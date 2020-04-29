@@ -7,7 +7,8 @@
 			var passengers = [ { name: "Jane Doloop", paid: true, ticket: "coach"},
 				       	   { name: "Dr. Evel", paid: true, ticket: "firstclass"},
 				           { name: "Sue Property", paid: false, ticket: "firstclass"},
-					   { name: "John Funcall", paid: true, ticket: "coach"}];
+					   { name: "John Funcall", paid: true, ticket: "coach"},
+					   { name: "Zezim", paid: false, ticket: "premium"}];
 
 
 
@@ -54,9 +55,33 @@
 					orderFunction = function(){
 						alert(passenger.name + ": Would you like a cocktail or wine?");
 					};
-				} else {
+				} else if(passenger.ticket === "coach"){
 					orderFunction = function(){
 						alert(passenger.name + ": Your choice is cola or water.");
+					};
+				} else {
+					orderFunction = function(){
+						alert(passenger.name + ": Your choices are wine, cola or water.");
+					};
+				}
+
+				return orderFunction;
+			}
+
+			function createDinnerOrder(passenger){
+				var orderFunction;
+
+				if(passenger.ticket === "firstclass"){
+					orderFunction = function(){
+						alert(passenger.name + ": Would you like chicken or pasta?");
+					};
+				} else if(passenger.ticket === "coach"){
+					orderFunction = function(){
+						alert(passenger.name + ": Your choice is peanuts or pretzels.");
+					};
+				} else {
+					orderFunction = function(){
+						alert(passenger.name + ": Your choices are: snack box or dinner plate.");
 					};
 				}
 
@@ -65,7 +90,9 @@
 
 			function serveCustomer(passenger){
 				var getDrinkOrderFunction = createDrinkOrder(passenger);
+				var getDinnerOrderFunction = createDinnerOrder(passenger);
 				getDrinkOrderFunction();
+				getDinnerOrderFunction();
 				getDrinkOrderFunction();
 				getDrinkOrderFunction();
 				getDrinkOrderFunction();
