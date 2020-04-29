@@ -4,10 +4,10 @@
 		<meta charset="utf-8">
 		<title> I'm alive! </title>
 		<script>
-			var passengers = [ { name: "Jane Doloop", paid: true},
-				       	   { name: "Dr. Evel", paid: true},
-				           { name: "Sue Property", paid: false},
-					   { name: "John Funcall", paid: true}];
+			var passengers = [ { name: "Jane Doloop", paid: true, ticket: "coach"},
+				       	   { name: "Dr. Evel", paid: true, ticket: "firstclass"},
+				           { name: "Sue Property", paid: false, ticket: "firstclass"},
+					   { name: "John Funcall", paid: true, ticket: "coach"}];
 
 
 
@@ -30,7 +30,7 @@
 			}
 
 			function printPassenger(passenger){
-				console.log("Passenger: " + passenger.name + "\t\tStatus: " + (passenger.paid ? "Paid." : "Didn't pay."));
+				console.log("Passenger: " + passenger.name + "\t\tStatus: " + (passenger.paid ? "Paid." : "Didn't pay") + "\t\tTicket: " + passenger.ticket);
 			}
 			
 			var allCanFly = processPassengers(passengers, checkNoFlyList);
@@ -44,6 +44,41 @@
 			}
 
 			processPassengers(passengers, printPassenger);
+
+			// ================================================
+
+			function createDrinkOrder(passenger){
+				var orderFunction;
+
+				if(passenger.ticket === "firstclass"){
+					orderFunction = function(){
+						alert(passenger.name + ": Would you like a cocktail or wine?");
+					};
+				} else {
+					orderFunction = function(){
+						alert(passenger.name + ": Your choice is cola or water.");
+					};
+				}
+
+				return orderFunction;
+			}
+
+			function serveCustomer(passenger){
+				var getDrinkOrderFunction = createDrinkOrder(passenger);
+				getDrinkOrderFunction();
+				getDrinkOrderFunction();
+				getDrinkOrderFunction();
+				getDrinkOrderFunction();
+			}
+
+			function servePassengers(passengers){
+				for(var i = 0; i < passengers.length; i++){
+					serveCustomer(passengers[i]);
+				}
+			}
+
+			servePassengers(passengers);
+
 
 		</script>
 	</head>
