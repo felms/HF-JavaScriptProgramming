@@ -28,6 +28,10 @@
 			function checkNotPaid(passenger){
 				return (!passenger.paid);
 			}
+
+			function printPassenger(passenger){
+				console.log("Passenger: " + passenger.name + "\t\tStatus: " + (passenger.paid ? "Paid." : "Didn't pay."));
+			}
 			
 			var allCanFly = processPassengers(passengers, checkNoFlyList);
 			if(!allCanFly){
@@ -38,6 +42,9 @@
 			if(!allPaid){
 				console.log("The plane can't take off; not everyone has paid.");
 			}
+
+			processPassengers(passengers, printPassenger);
+
 		</script>
 	</head>
 	<body>
