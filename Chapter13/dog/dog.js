@@ -24,7 +24,11 @@ Dog.prototype.wag = function(){
 
 var fido = new Dog("Fido", "Mixed", 38);
 var fluffy = new Dog("Fluffy", "Poodle", 30);
+
 var spot = new Dog("Spot", "Chihuahua", 10);
+spot.bark = function() {
+	console.log(this.name + " says WOOF!");
+};
 
 fido.bark();
 fido.run();
