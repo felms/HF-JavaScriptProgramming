@@ -41,3 +41,22 @@ fluffy.wag();
 spot.bark();
 spot.run();
 spot.wag();
+
+Dog.prototype.sitting = false;
+
+Dog.prototype.sit = function(){
+	if(this.sitting){
+		console.log(this.name + " is already sitting.");
+	} else {
+		this.sitting = true;
+		console.log(this.name + " is now sitting.");
+	}
+};
+
+var barnaby = new Dog("Barnaby", "Basset Hound", 55);
+
+barnaby.sit();
+barnaby.sit();
+
+spot.sit();
+spot.sit();
